@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NewsDetection</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="head">
+        <div class="brand">NewsDetection</div>
+        <div class="badge" id="statusBadge">Idle</div>
+      </div>
+
+      <div class="field">
+        <label for="method">Detection Method</label>
+        <select id="method">
+          <option value="ml">Local ML Model</option>
+          <option value="llama">Llama AI</option>
+          <option value="gpt" selected>GPT</option>
+        </select>
+        <div class="hint" id="methodHint">GPT can use a Twitter/X link</div>
+      </div>
+
+      <div class="field">
+        <label for="liveDetect">Live Detect (Twitter/X, Reddit, Threads, Facebook)</label>
+        <input id="liveDetect" type="checkbox" />
+        <div class="hint">Auto-annotates supported platforms with status, confidence, and details</div>
+      </div>
+
+      <div class="field">
+        <label for="content">Content</label>
+        <textarea id="content" placeholder="Paste article text or leave blank to analyze current page"></textarea>
+      </div>
+
+      <div class="field" id="twitterField">
+        <label for="twitterLink">Twitter/X Link</label>
+        <input id="twitterLink" type="url" placeholder="https://x.com/..." />
+      </div>
+
+      <button id="analyze"><span class="spinner" id="spinner"></span><span id="btnText">Analyze</span></button>
+
+      <div id="error" class="error" hidden></div>
+
+      <div id="resultCard" class="card" hidden>
+        <div class="row space">
+          <div class="status" id="statusText">Result</div>
+          <div class="conf" id="confText">Confidence: 0%</div>
+        </div>
+        <div class="section">
+          <div class="title">Explanation</div>
+          <div class="text" id="explanationText"></div>
+        </div>
+        <div class="section" id="factorsSection" hidden>
+          <div class="title">Analysis Factors</div>
+          <div class="chips" id="factors"></div>
+        </div>
+        <details class="jsonWrap">
+          <summary>Raw JSON</summary>
+          <pre id="json"></pre>
+        </details>
+        <div class="row space">
+          <button id="downloadPdf" class="secondary">Download Detailed PDF</button>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+  </html>
+
