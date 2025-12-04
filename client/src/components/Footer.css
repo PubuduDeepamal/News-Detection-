@@ -1,0 +1,18 @@
+.app-footer {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-footer {
+    padding: 1rem;
+  }
+}
